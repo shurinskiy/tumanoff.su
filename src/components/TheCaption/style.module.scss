@@ -1,0 +1,103 @@
+@use "@/assets/additional" as *; 
+
+.caption {
+	display: flex;
+	flex-flow: column nowrap;
+	min-height: 110px;
+	position: relative;
+	padding-left: 100px;
+	
+	@include media('<=xxs') {
+		min-height: 95px;
+	}
+
+	&__date {
+		color: #fff;
+		background-color: #a5a5a5;
+		font-weight: 700;
+		box-sizing: border-box;
+		width: 135px;
+		height: 110px;
+		padding: 10px 15px;
+		position: absolute;
+		top: 0; left: -65px;
+		font-size: 16px;
+		
+		@include media('<=xxs') {
+			font-size: 14px;
+			padding: 10px;
+			width: 115px;
+			height: 95px;
+			left: -35px;
+		}
+	
+		span {
+			display: block;
+			text-align: center;
+			font-weight: 900;
+			line-height: 0.95;
+
+			&:nth-child(1) {
+				font-size: 43px;
+				margin-bottom: 5px;
+				
+				@include media('<=xxs') {
+					font-size: 34px;
+				}
+			}
+
+			&:nth-child(2) {
+				margin-bottom: 7px;
+			}
+		}
+	}
+
+	&__side {
+		flex: 1 1 auto;
+		// margin-left: 30px;
+	}
+
+	&__title {
+		color: #333;
+		font-size: 30px;
+		line-height: 1.0;
+		padding-bottom: 15px;
+		border-bottom: 3px solid #91af89;
+		margin-bottom: 15px;
+		font-weight: 700;
+		@include range(30px, 25px, 1680px, 1440px);
+		
+		@include media('<=xlg') {
+			font-size: 30px;
+			@include range(30px, 20px, 960px, 360px);
+		}
+		
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+	}
+
+	&__tags {
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: lowercase;
+		display: flex;
+		flex-flow: row wrap;
+
+		@include media('<=xxxs') {
+			font-size: 12px;
+		}
+
+		a {
+			color: rgba(var(--accent));
+			transition: color 0.4s;
+			margin: 0 6px 2px 0;
+			
+			&:hover {
+				color: rgba(var(--accident));
+			}
+		}
+	}
+}

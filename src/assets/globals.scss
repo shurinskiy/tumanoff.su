@@ -1,0 +1,110 @@
+@use "@/assets/additional" as *; 
+@include reset();
+
+:root {
+	--container: 1200px;
+	--gap: 16px;
+	--accent: 145, 175, 137;
+	--accident: 171, 223, 156;
+	--brown: 39, 38, 41;
+}
+
+html, body {
+	box-sizing: border-box;
+	line-height: 1.2;
+	font-weight: 400;
+	min-height: 100vh;
+	background-color: #fff;
+	color: #555;
+}
+
+body {
+	display: grid;
+	grid-template-columns: 480px 1fr;
+	grid-template-rows: 1fr 70px;
+	@include screen-media();
+	
+	@include media('<=xxxlg') {
+		grid-template-columns: 400px 1fr;
+	}
+	
+	@include media('<=md') {
+		display: flex;
+		flex-flow: column nowrap;
+		padding-top: 75px;
+	}
+	
+	&.home {
+		position: relative;
+		grid-template-rows: 1fr;
+		background: url('/images/main_bg.png') center top / cover no-repeat transparent;
+
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 795px;
+			height: 400px;
+			z-index: 0;
+			background: url('/images/dev_ofweb.png') right bottom / cover no-repeat transparent;
+		}
+	}
+}
+
+.sidebar {
+	box-sizing: border-box;
+	grid-column: span 1;
+	
+	@include media('<=md') {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+}
+
+.main {
+	box-sizing: border-box;
+	padding: 80px 70px 50px 70px;
+	grid-column: span 1;
+	flex-grow: 1;
+	background: url('/images/content_bg.png') -100px -40px no-repeat #f9f9f9;
+	
+	@include media('<=md') {
+		padding: 70px;
+	}
+	
+	@include media('<=xs') {
+		padding: 40px;
+	}
+	
+	@include media('<=xxs') {
+		background-image: none;
+		padding: 40px 20px;
+	}
+
+	&_home {
+		background: none;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__inner {
+		box-sizing: border-box;
+		margin: 0 auto;
+		
+		@include media('<=xxxxlg') {
+			max-width: 1160px;
+		}
+	}
+}
+
+.footer {
+	box-sizing: border-box;
+	grid-column: span 2;
+	margin-top: auto;
+}

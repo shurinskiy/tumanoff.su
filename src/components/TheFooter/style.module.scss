@@ -1,0 +1,15 @@
+@use "@/assets/additional" as *; 
+
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #333;
+	font-size: 24px;
+	padding: 24px 0;
+	color: #fff;
+	
+	@include media('<=xs') {
+		font-size: 20px;
+	}
+}

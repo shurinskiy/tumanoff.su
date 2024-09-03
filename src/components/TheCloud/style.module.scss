@@ -1,0 +1,23 @@
+@use "@/assets/additional" as *; 
+
+.cloud {
+	color: #a0a0a0;
+	display: flex;
+	flex-flow: row wrap;
+	font-weight: 600;
+	font-size: 13px;
+	line-height: 1.4;
+
+	a {
+		text-decoration: none;
+		color: inherit;
+		display: block;
+		margin: 0 8px 0px 0;
+		letter-spacing: 0.06em;
+		@extend %transition;
+
+		&:hover {
+			@extend %hover;
+		}
+	}
+}

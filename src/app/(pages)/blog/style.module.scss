@@ -1,0 +1,19 @@
+@use "@/assets/additional" as *; 
+
+.blog {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(450px, auto));
+	grid-gap: 50px 40px;
+	
+	@include media('<=xxxxlg') {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	
+	@include media('<=xlg') {
+		grid-template-columns: 1fr;
+	}
+
+	&__item {
+		grid-column: span 1;
+	}
+}

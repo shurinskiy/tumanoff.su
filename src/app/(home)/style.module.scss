@@ -1,0 +1,52 @@
+@use "@/assets/additional" as *; 
+
+.wellcome {
+	box-sizing: border-box;
+	position: relative;
+	z-index: 1;
+	
+	&__text {
+		line-height: 1.2;
+		color: #ccc;
+		margin-bottom: 80px;
+		font-size: 40px;
+		@include range(40px, 34px, 1280px, 960px);
+		
+		@include media('<=md') {
+			font-size: 40px;
+			@include range(40px, 28px, 960px, 360px);
+		}
+
+		p {
+			margin-bottom: 10px;
+		}
+	
+		span { 
+			color: rgb(var(--accident));
+		}
+	
+		p:nth-child(2) {
+			margin-bottom: 80px;
+		}
+	}
+		
+	&__btn {
+		display: block;
+		box-sizing: border-box;
+		text-decoration: none;
+		text-align: center;
+		padding: 26px 30px;
+		max-width: 350px;
+		color: rgb(var(--accident));
+		border: 3px solid rgb(var(--accident));
+		font-size: 22px;
+		font-weight: bold;
+		letter-spacing: 3px;
+		transition: box-shadow 0.3s, background-color 0.3s;
+		
+		&:hover {
+			box-shadow: 0 0 15px rgba(var(--accident), 0.5);
+			background-color: rgba(var(--accident), 0.15);
+		}
+	}
+}
