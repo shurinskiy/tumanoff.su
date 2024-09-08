@@ -21,7 +21,7 @@ type Props = {
 
 const TheSidebar = ({home}: Props) => {
 	const [menuOpen, setMenuOpen] = useState<boolean | null>(null);
-	const refButton = useRef(null);
+	const refButton = useRef<HTMLButtonElement>(null);
 	const refNavi = useRef<HTMLDivElement>(null);
 	
 	useOutsideClick(() => setMenuOpen(false), [refNavi, refButton]);
