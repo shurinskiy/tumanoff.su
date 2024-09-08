@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import s from './style.module.scss'
 import { BsSearch } from "react-icons/bs";
 
@@ -7,7 +8,7 @@ type Props = {
 
 const TheSearch = ({cls}: Props) => {
 	return (
-		<form className={`${cls || ''} ${s.search}`} action='/'>
+		<form className={clsx(cls, s.search)} action='/'>
 			<input type="text" placeholder='Искать на сайте..' />
 				<button type="button"><BsSearch size={22} />
 			</button>

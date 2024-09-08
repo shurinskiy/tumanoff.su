@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 import s from './style.module.scss';
 
@@ -7,7 +8,7 @@ type Props = {
 
 const TheMenu = ({cls}: Props) => {
 	return (
-		<div className={`${cls || ''} ${s.menu}`}>
+		<div className={clsx(cls, s.menu)}>
 			<Link className={`${s.menu__link} ${s.active}`} href="/blog">Мастерская</Link>
 			<Link className={`${s.menu__link}`} href="/">Обо мне</Link>
 			<Link className={`${s.menu__link}`} href="/">Портфолио</Link>

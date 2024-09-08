@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import clsx from 'clsx';
 import scrollLock from 'scroll-lock';
 import s from './style.module.scss'
 import Image from 'next/image'
@@ -19,15 +20,29 @@ type Props = {
 };
 
 const TheSidebar = ({home}: Props) => {
-	const [menuOpen, setMenuOpen] = useState<boolean>(false);
-	const naviRef = useOutsideClick(() => setMenuOpen(false));
+	const [menuOpen, setMenuOpen] = useState<boolean | null>(null);
+	const refButton = useRef(null);
+	const refNavi = useRef<HTMLDivElement>(null);
+	
+	useOutsideClick(() => setMenuOpen(false), [refNavi, refButton]);
 
 	useEffect(() => {
-		menuOpen ? scrollLock.disablePageScroll() : scrollLock.enablePageScroll();
-	}, [menuOpen]);
+		if (menuOpen) {
+			scrollLock.disablePageScroll()
+			document.body.classList.add('underlay');
+		} else if (!menuOpen && menuOpen !== null) {
+			scrollLock.clearQueueScrollLocks();
+			scrollLock.enablePageScroll();
+			document.body.classList.add('underlay_closing');
+			
+			refNavi.current && refNavi.current.addEventListener('transitionend', () => {
+				document.body.classList.remove('underlay', 'underlay_closing');
+			}, { once: true });
+		}
+	}, [menuOpen, refNavi]);
 
 	return (
-		<aside className={`${s.sidebar} ${home ? s.sidebar_home : ''} sidebar`} data-scroll-lock-fill-gap>
+		<aside className={clsx(s.sidebar, home && s.sidebar_home, 'sidebar')} data-scroll-lock-fill-gap>
 			<div className={s.sidebar__inner}>
 				<a href="/" className={s.sidebar__logo}>
 					<FaChild color='#abdf9c' size="28" />
@@ -37,7 +52,7 @@ const TheSidebar = ({home}: Props) => {
 				<a href="/" className={s.sidebar__avatar}>
 					<Image src={ '/images/me.jpg' } alt="It's me" width='230' height='230' />
 				</a>
-				<div className={`${s.sidebar__navi} ${!menuOpen || s.opened}`} ref={naviRef}>
+				<div className={clsx(s.sidebar__navi, menuOpen && s.opened)} ref={refNavi}>
 					<button className={s.sidebar__close} onClick={() => setMenuOpen(false)}>
 						<BsXLg fill='#fff' size="24" />
 					</button>
@@ -49,7 +64,7 @@ const TheSidebar = ({home}: Props) => {
 					}
 					<TheMenu cls={s.sidebar__menu}/>
 				</div>
-				<button className={s.sidebar__open} onClick={() => setMenuOpen(!menuOpen)}>
+				<button className={s.sidebar__open} onClick={() => setMenuOpen(!menuOpen)} ref={refButton}>
 					<CgMenuRight color='#cbcbcb' size='28' />
 				</button>
 			</div>

@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import s from './style.module.scss'
 
 type Props = {
@@ -6,7 +7,7 @@ type Props = {
 
 const TheCloud = ({cls}: Props) => {
 	return (
-		<div className={`${cls || ''} ${s.cloud}`}>
+		<div className={clsx(cls, s.cloud)}>
 			<a href="/">верстка</a>
 			<a href="/">эффекты</a>
 			<a href="/">решения</a>
