@@ -21,7 +21,7 @@ html, body {
 body {
 	display: grid;
 	grid-template-columns: 480px 1fr;
-	grid-template-rows: 1fr 70px;
+	grid-template-rows: 1fr 60px;
 	// @include screen-media();
 	
 	@include media('<=xxxlg') {
@@ -105,7 +105,12 @@ body {
 
 	&__inner {
 		box-sizing: border-box;
+		height: 100%;
 		margin: 0 auto;
+
+		&_pending {
+			background: url('/images/loader.svg') center / 35px 35px no-repeat transparent;
+		}
 		
 		@include media('<=xxxxlg') {
 			max-width: 1160px;
@@ -116,7 +121,6 @@ body {
 .footer {
 	box-sizing: border-box;
 	grid-column: span 2;
-	margin-top: auto;
 }
 
 @keyframes showItem {

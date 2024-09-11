@@ -39,7 +39,7 @@ const TheSidebar = ({home}: Props) => {
 				document.body.classList.remove('underlay', 'underlay_closing');
 			}, { once: true });
 		}
-	}, [menuOpen, refNavi]);
+	}, [menuOpen]);
 
 	return (
 		<aside className={clsx(s.sidebar, home && s.sidebar_home, 'sidebar')} data-scroll-lock-fill-gap>

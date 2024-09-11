@@ -8,7 +8,7 @@ type Props = {
 
 const TheSearch = ({cls}: Props) => {
 	return (
-		<form className={clsx(cls, s.search)} action='/'>
+		<form className={clsx(cls, s.search)} action='/' name='search'>
 			<input type="text" placeholder='Искать на сайте..' />
 				<button type="button"><BsSearch size={22} />
 			</button>

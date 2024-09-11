@@ -1,12 +1,13 @@
 import React from 'react';
+import parse from 'html-react-parser';
 import clsx from 'clsx';
 
 import s from './style.module.scss'
-import { DataArticles } from '@/assets/data';
+import { DataArticle } from '@/api';
 
 type Props = {
 	cls?: string,
-	data?: DataArticles,
+	data?: DataArticle,
 	children? : React.ReactNode
 };
 
@@ -14,11 +15,11 @@ const TheCaption = ({cls, data, children}: Props) => {
 	return (
 		<div className={clsx(cls, s.caption)}>
 			<div className={`${s.caption__date}`}>
-				{data && data.date.split(' ').map( (item, i) => <span key={i}>{item}</span> )}
+				{data && data.date?.split(' ').map( (item, i) => <span key={i}>{item}</span> )}
 			</div>
 			<h2 className={`${s.caption__title}`}>
 				{data
-					? <a href={`/blog/${data.url}`} dangerouslySetInnerHTML={{__html: data.title}}/>
+					? <a href={`/blog/${data.slug}`}>{parse(data.title)}</a>
 					: <>{children}</>
 				}
 			</h2>

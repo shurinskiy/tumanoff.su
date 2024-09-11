@@ -1,0 +1,28 @@
+@use "@/assets/additional" as *; 
+
+.post {
+	background-color: rgba(255, 255, 255, 0.9);
+	padding: 30px 40px;	
+	box-shadow:  0px 2px 10px rgba(0,0,0,0.07);
+	
+	@include media('<=xxs') {
+		padding: 30px 20px;	
+	}
+	
+	&__inner {
+		animation: 0.4s showItem;
+	}
+
+	&__caption {
+		margin-bottom: 30px;
+		
+		@include media('<=xxs') {
+			margin-bottom: 20px;
+		}
+	}
+	
+	@keyframes showItem {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+}
