@@ -20,7 +20,7 @@ class PostService {
 
 	async getOne(slug: string) {
 		const {data} = await axios.get<DataArticle[]>(`${this.URL}?slug=${slug}`);
-		return data;
+		return data[0];
 	}
 
 	async create(data: []) {

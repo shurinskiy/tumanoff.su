@@ -20,6 +20,91 @@
 			margin-bottom: 20px;
 		}
 	}
+
+	&__content {
+		line-height: 1.3;
+
+		@include media('<=xs') {
+			font-size: 14px;
+			line-height: 1.4;
+		}
+
+		p {
+			margin-bottom: 16px;
+		}
+	}
+
+	& :global(.post__demo) {
+		color: rgb(var(--accent));
+		display: block;
+		text-decoration: none;
+		background-color: #f6f6f6;
+		padding: 25px 15px 25px 90px;
+		border-left: 4px solid #bcbcbc;
+		font-family: "MG", sans-serif;
+		transition: color 0.4s;
+		margin-bottom: 16px;
+		position: relative;
+		font-size: 28px;
+		
+		@include media('<=xs') {
+			font-size: 24px;
+		}
+
+		&:hover {
+			color: rgb(var(--accident));
+		}
+
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 30px;
+			width: 40px;
+			height: 37px;
+			background: url('/images/gears.svg') center / contain no-repeat transparent;
+			transform: translateY(-50%);
+		}
+	}
+
+	& :global(.post__note) {
+		padding: 40px 20px 30px 40px;
+		background: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="130" height="130" viewBox="0 0 130 130"><defs><style>.cls-1 {fill: #d8e1d5;} .cls-2 {fill: #fff;fill-rule: evenodd;}</style></defs><circle id="circle" data-name="circle" class="cls-1" cx="65" cy="65" r="65"/><path id="shape" data-name="shape" class="cls-2" d="M42.113,27.465h41.2c6.372,0,11.9,8.153,11.9,11.9v11.9c0,13.617-20.141,18.094-20.141,25.634v2.747H52.183V73.239c0-9.431,17.394-14.219,17.394-19.225V50.352c0-1.318-.809-2.746-3.662-2.746h-23.8V27.465Zm10.07,57.676H75.07V106.2H52.183V85.141Z"/></svg>') no-repeat 20px 15px #f6f6f6; 
+		margin-bottom: 16px;
+		border-left: 4px solid #91af89;
+	}
+
+	& :global(.post__suppose) {
+		padding: 40px 20px 30px 40px;
+		background: svg-url('<svg xmlns="http://www.w3.org/2000/svg" width="130" height="130" viewBox="0 0 130 130"><defs><style>.cls-1 {fill: #e1d5d5;}.cls-2 {fill: #fff;fill-rule: evenodd;}</style></defs><circle id="circle2" class="cls-1" cx="65" cy="65" r="65"/><path id="shape2" class="cls-2" d="M54,30H78L76,78H56Zm2,54H76v19H56V84Z"/></svg>') no-repeat 20px 15px #f6f6f6; 
+		margin-bottom: 16px;
+		border-left: 4px solid #af8989;
+	}
+	
+	&__highlight {
+		tab-size: 4;
+		font-size: 14px;
+		line-height: 1.5;
+		overflow: auto;
+		
+		@include media('<=xs') {
+			font-size: 12px;
+			tab-size: 2;
+		}
+	}
+
+	&__code {
+		// white-space: pre-wrap;
+
+		& :global(.linenumber) {
+			border-right: 2px solid #555;
+			color: #aaa !important;
+			padding-right: 10px !important;
+			margin-right: 18px !important;
+			min-width: 2em !important;
+		}
+	}
 	
 	@keyframes showItem {
 		from { opacity: 0; }

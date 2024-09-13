@@ -14,7 +14,11 @@
 		
 		@include media('<=md') {
 			font-size: 40px;
-			@include range(40px, 28px, 960px, 360px);
+			@include range(40px, 30px, 960px, 360px);
+		}
+		
+		@media screen and (max-height: 700px) {
+			margin-bottom: 50px;
 		}
 
 		p {
@@ -27,22 +31,36 @@
 	
 		p:nth-child(2) {
 			margin-bottom: 80px;
+		
+			@media screen and (max-height: 700px) {
+				margin-bottom: 30px;
+			}
 		}
 	}
 		
 	&__btn {
-		display: block;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		box-sizing: border-box;
 		text-decoration: none;
 		text-align: center;
-		padding: 26px 30px;
+		padding: 10px;
+		width: 100%;
 		max-width: 350px;
+		height: 75px;
 		color: rgb(var(--accident));
 		border: 3px solid rgb(var(--accident));
 		font-size: 22px;
 		font-weight: bold;
 		letter-spacing: 3px;
 		transition: box-shadow 0.3s, background-color 0.3s;
+		
+		@include media('<=xxs') {
+			border-width: 2px;
+			font-size: 18px;
+			height: 65px;
+		}
 		
 		&:hover {
 			box-shadow: 0 0 15px rgba(var(--accident), 0.5);

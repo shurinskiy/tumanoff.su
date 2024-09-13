@@ -52,7 +52,7 @@ $basesize: 16;
 /* Утилиты */
 
 // подключить шрифт 
-@mixin font-face($file, $family, $weight: "normal", $style: "normal", $folder: "fonts/") { 
+@mixin font-face($file, $family, $weight: "normal", $style: "normal", $folder: "/fonts/") { 
 	@font-face { 
 		font-family: $family;
 		src: url("#{$folder}#{$file}.woff") format('woff'),

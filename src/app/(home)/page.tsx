@@ -7,7 +7,7 @@ export default function Home() {
 			<div className={s.wellcome}>
 				<div className={`${s.wellcome__text}`}>
 					<p>Здравствуйте,</p>
-					<p>меня зовут Александр Туманов.</p>
+					<p>меня зовут <strong>Александр Туманов.</strong></p>
 					<p>Я - <span>веб-разработчик</span></p>
 				</div>
 				<a className={`${s.wellcome__btn} ${roboto.className}`} href="./index.html">Посмотреть работы</a>
