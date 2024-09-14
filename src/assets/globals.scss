@@ -25,9 +25,18 @@ html, body {
 }
 
 body {
-	display: flex;
-	flex-flow: row wrap;
-	@include screen-media();
+	display: grid;
+	grid-template-columns: 480px minmax(0, 1fr);
+	grid-template-rows: 1fr 60px;
+	// @include screen-media();
+	
+	@include media('<=xxxlg') {
+		grid-template-columns: 400px minmax(0, 1fr);
+	}
+	
+	@include media('<=lg') {
+		grid-template-columns: 360px minmax(0, 1fr);
+	}
 	
 	@include media('<=md') {
 		display: flex;
@@ -66,16 +75,7 @@ body {
 
 .sidebar {
 	box-sizing: border-box;
-	flex-shrink: 0;
-	width: 460px;
-	
-	@include media('<=xxxlg') {
-		width: 400px;
-	}
-	
-	@include media('<=lg') {
-		width: 360px;
-	}
+	grid-column: span 1;
 	
 	@include media('<=md') {
 		position: fixed;
@@ -88,23 +88,17 @@ body {
 .main {
 	box-sizing: border-box;
 	padding: 80px 70px 50px 70px;
+	grid-column: span 1;
+	flex-grow: 1;
 	display: flex;
 	flex-flow: column nowrap;
-	flex-grow: 1;
-	width: calc(100% - 460px);
 	background: url('/images/content_bg.png') -100px -40px no-repeat #f9f9f9;
 	
-	@include media('<=xxxlg') {
-		width: calc(100% - 400px);
-	}
-	
 	@include media('<=lg') {
-		width: calc(100% - 360px);
 		padding: 40px;
 	}
 	
 	@include media('<=md') {
-		width: auto;
 		padding: 70px;
 	}
 	
@@ -137,12 +131,16 @@ body {
 		@include media('<=xxxxlg') {
 			max-width: 1160px;
 		}
+		
+		@include media('<=xxlg') {
+			max-width: 100%;
+		}
 	}
 }
 
 .footer {
 	box-sizing: border-box;
-	width: 100%;
+	grid-column: span 2;
 }
 
 strong {
