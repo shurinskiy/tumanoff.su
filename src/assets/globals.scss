@@ -10,9 +10,11 @@
 }
 
 
-@include font-face("Magistral", "MG", 400);
-@include font-face("MagistralBold", "MG", 600);
-@include font-face("MagistralBlack", "MG", 900);
+@include font-face("Magistral-Light", "MG", 300);
+@include font-face("Magistral-Book", "MG", 400);
+@include font-face("Magistral-Medium", "MG", 500);
+@include font-face("Magistral-Bold", "MG", 700);
+@include font-face("Magistral-ExtraBold", "MG", 800);
 
 html, body {
 	box-sizing: border-box;
@@ -64,7 +66,7 @@ body {
 			height: 100%;
 			background-color: rgba(0, 0, 0, 0.5);
 			transition: opacity 0.3s;
-			animation: 0.3s showItem;
+			animation: showItem 0.3s;
 		}
 	}
 	
@@ -117,6 +119,47 @@ body {
 		align-items: center;
 	}
 
+	&__loading {
+		display: flex;
+		flex-flow: column nowrap;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+		flex-grow: 1;
+
+		@keyframes ellipsisDot {
+			25% { content: ''; }
+			50% { content: '.'; }
+			75% { content: '..'; }
+			100% { content: '...'; }
+		}
+
+		span {
+			color: #bbb;
+			font-size: 30px;
+			font-weight: 400;
+			
+			@include media('<=md') {
+				font-size: 28px;
+			}
+			
+			@include media('<=xxs') {
+				font-size: 24px;
+			}
+	
+			&::after {
+				display: inline-block;
+				content: '...';
+				overflow: hidden;
+				letter-spacing: 0.05em;
+				height: 1em;
+				width: 25px;
+				vertical-align: top;
+				animation: ellipsisDot 2.0s infinite;
+			}
+		}
+	}
+
 	&__inner {
 		box-sizing: border-box;
 		height: 100%;
@@ -124,9 +167,9 @@ body {
 		flex-grow: 1;
 		margin: 0 auto;
 		
-		&_pending {
+		/* &_pending {
 			background: url('/images/loader.svg') center / 35px 35px no-repeat transparent;
-		}
+		} */
 		
 		@include media('<=xxxxlg') {
 			max-width: 1160px;
@@ -144,7 +187,7 @@ body {
 }
 
 strong {
-	font-weight: 600;
+	font-weight: 700;
 }
 
 p {

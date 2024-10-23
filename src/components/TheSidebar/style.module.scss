@@ -50,11 +50,12 @@
 		grid-template-columns: 30px 1fr;
 		grid-gap: 0 15px;
 		font-size: 25px;
-		line-height: 1.1;
+		font-weight: 300;
+		line-height: 1.2;
 		color: #fff;
 		text-decoration: none;
 		text-align: right;
-		padding: 4px 45px 6px 10px;
+		padding: 4px 40px 6px 10px;
 		border-bottom: 1px solid #9f9f9f;
 		margin-bottom: 80px;
 		outline: none;
@@ -72,7 +73,7 @@
 		svg {
 			grid-column: span 1;
 			grid-row: span 2;
-			margin-top: 5px;
+			margin-top: 8px;
 		}
 		
 		span {
@@ -84,7 +85,8 @@
 			&:nth-of-type(2) {
 				display: block;
 				color: #9f9f9f;
-				font-size: 0.55em;
+				font-weight: 400;
+				font-size: 13px;
 			}
 		}
 

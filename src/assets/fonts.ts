@@ -4,18 +4,28 @@ import localFont from 'next/font/local'
 const magistral = localFont({
 	src: [
 		{
-			path: '../../public/fonts/Magistral.woff',
+			path: '../../public/fonts/Magistral-Light.woff',
+			weight: '300',
+			style: 'normal',
+		},
+		{
+			path: '../../public/fonts/Magistral-Book.woff',
 			weight: '400',
 			style: 'normal',
 		},
 		{
-			path: '../../public/fonts/MagistralBold.woff',
+			path: '../../public/fonts/Magistral-Medium.woff',
+			weight: '500',
+			style: 'normal',
+		},
+		{
+			path: '../../public/fonts/Magistral-Bold.woff',
 			weight: '700',
 			style: 'normal',
 		},
 		{
-			path: '../../public/fonts/MagistralBlack.woff',
-			weight: '900',
+			path: '../../public/fonts/Magistral-ExtraBold.woff',
+			weight: '800',
 			style: 'normal',
 		}
 	]

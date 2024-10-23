@@ -1,23 +1,20 @@
 import clsx from 'clsx';
-import s from './style.module.scss'
+import { tagsService } from '@/services';
+import s from './style.module.scss';
+import { TheCloudInner } from './TheCloudInner';
 
 type Props = {
 	cls?: string
 };
 
-const TheCloud = ({cls}: Props) => {
-	return (
-		<div className={clsx(cls, s.cloud)}>
-			<a href="/">верстка</a>
-			<a href="/">эффекты</a>
-			<a href="/">решения</a>
-			<a href="/">javascript</a>
-			<a href="/">scss</a>
-			<a href="/">wordpress</a>
-			<a href="/">react</a>
-			<a href="/">next.js</a>
-		</div>
-	);
+const TheCloud = async ({ cls }: Props) => {
+	const tags = await tagsService.getAll();
+
+	return <>
+		{!!tags?.length && <div className={clsx(cls, s.cloud)}>
+			<TheCloudInner tags={tags} />
+		</div>}
+	</>
 }
 
 export default TheCloud;

@@ -1,13 +1,14 @@
 import React from 'react';
+import Link from 'next/link';
 import parse from 'html-react-parser';
 import clsx from 'clsx';
 
 import s from './style.module.scss'
-import { DataArticle } from '@/api';
+import { TypePost } from '@/services';
 
 type Props = {
 	cls?: string,
-	data?: DataArticle,
+	data?: TypePost,
 	children? : React.ReactNode
 };
 
@@ -23,13 +24,13 @@ const TheCaption = ({cls, data, children}: Props) => {
 					: <>{children}</>
 				}
 			</h2>
-			{data?.tags && 
+			{!!data?.tags && 
 				<div className={`${s.caption__tags}`}>
-					{data.tags.map( (tag, i) => <a href={`/search/${tag}`} key={i}>{tag}</a> )}
+					{data.tags.map( (tag, i) => <Link href={`/blog?tag=${tag.slug}`} key={i}>{tag.name}</Link> )}
 				</div>
 			}
 		</div>
 	);
 }
 
-export default TheCaption;
+export { TheCaption };

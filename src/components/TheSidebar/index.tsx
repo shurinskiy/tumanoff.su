@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, ReactNode } from 'react';
 import clsx from 'clsx';
 import scrollLock from 'scroll-lock';
 import s from './style.module.scss'
@@ -12,15 +12,13 @@ import { CgMenuRight } from "react-icons/cg";
 import { useSwipeable } from 'react-swipeable';
 
 import TheMenu from '@/components/TheMenu';
-import TheCloud from '@/components/TheCloud';
-import TheSearch from '@/components/TheSearch';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 type Props = {
-	home?: boolean
+	children?: ReactNode;
 };
 
-const TheSidebar = ({home}: Props) => {
+const TheSidebar = ({ children }: Props) => {
 	const [menuOpen, setMenuOpen] = useState<boolean | null>(null);
 	const refButton = useRef<HTMLButtonElement>(null);
 	const refNavi = useRef<HTMLDivElement | null>(null);
@@ -49,7 +47,7 @@ const TheSidebar = ({home}: Props) => {
 	}, [menuOpen]);
 
 	return (
-		<aside className={clsx(s.sidebar, home && s.sidebar_home, 'sidebar')} data-scroll-lock-fill-gap>
+		<aside className={clsx(s.sidebar, !children && s.sidebar_home, 'sidebar')} data-scroll-lock-fill-gap>
 			<div className={s.sidebar__inner}>
 				<a href="/" className={s.sidebar__logo}>
 					<FaChild color='#abdf9c' size="28" />
@@ -64,12 +62,7 @@ const TheSidebar = ({home}: Props) => {
 						<a href="/" className={s.sidebar__avatar}>
 							<Image src={ '/images/me.jpg' } alt="It's me" width='230' height='230' />
 						</a>
-						{! home &&
-							<>
-								<TheSearch cls={s.sidebar__search}/>
-								<TheCloud cls={s.sidebar__cloud}/>
-							</>
-						}
+						{ children }
 						<TheMenu cls={s.sidebar__menu}/>
 					</div>
 				</div>

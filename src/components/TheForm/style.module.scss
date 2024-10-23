@@ -1,0 +1,54 @@
+@use "@/assets/additional" as *; 
+
+.form {
+	padding-top: 40px;
+	animation: 0.4s showItem;
+	@keyframes showItem {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+	
+	&__fields {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 40px;
+		margin-bottom: 40px;
+	}
+
+	&__field {
+		
+		input, textarea {
+			grid-column: span 1;
+			@extend %reset-input;
+			background-color: #f6f6f6;
+			padding: 20px 40px;
+			font-size: 19px;
+			resize: none;
+			min-width: 0;
+			width: 100%;
+		
+			&::placeholder {
+				color: #ccc;
+				font-weight: 300;
+			}
+		}
+
+		&_wide {
+			grid-column: span 2;
+		}
+	}
+
+	&__submit {
+		@extend %reset-button;
+		background-color: rgb(var(--accent));
+		color: #fff;
+		padding: 20px 30px;
+		transition: color 0.5s;
+		font-weight: 300;
+		font-size: 19px;
+		display: block;
+		letter-spacing: 0.04em;
+		width: fit-content;
+		margin-left: auto;
+	}
+}

@@ -2,13 +2,13 @@ import Link from 'next/link';
 
 import clsx from 'clsx';
 import { roboto } from '@/fonts'
-import { DataArticle } from '@/api';
+import { TypePost } from '@/services';
 import s from './style.module.scss'
-import TheCaption from '@/components/TheCaption';
+import { TheCaption } from '@/components/TheCaption';
 
 type Props = {
 	cls?: string,
-	data: DataArticle
+	data: TypePost
 };
 
 const TheTeaser = ({cls, data }: Props) => {

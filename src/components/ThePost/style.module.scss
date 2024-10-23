@@ -2,7 +2,7 @@
 
 .post {
 	background-color: rgba(255, 255, 255, 0.8);
-	padding: 30px 40px;	
+	padding: 30px 40px 40px;	
 	box-shadow:  0px 2px 10px rgba(0, 0, 0, 0.07);
 	
 	@include media('<=xxs') {
@@ -156,6 +156,25 @@
 		
 		a {
 			color: rgb(var(--accent));
+		}
+	}
+
+	&__comments {
+		color: inherit;		
+	}
+
+	&__form {
+		color: inherit;		
+	}
+
+	&__reply {
+		@extend %reset-button;
+		text-decoration: underline;
+		font-weight: 500;
+		padding-top: 40px;
+
+		@include media('<=xxs') {
+			font-size: 15px;
 		}
 	}
 }
